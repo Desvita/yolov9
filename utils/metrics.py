@@ -201,7 +201,7 @@ class ConfusionMatrix:
                        annot_kws={
                            "size": 8},
                        cmap='Blues',
-                       fmt='d',
+                       fmt='.0f',
                        square=True,
                        vmin=0,
                        xticklabels=ticklabels,
