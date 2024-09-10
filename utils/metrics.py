@@ -186,7 +186,7 @@ class ConfusionMatrix:
         import seaborn as sn
 
         array = self.matrix # do not normalize columns
-        # don't annotate (would appear as 0.00)
+        array[array < 0.005] = np.nan # don't annotate (would appear as 0.00)
 
         fig, ax = plt.subplots(1, 1, figsize=(12, 9), tight_layout=True)
         nc, nn = self.nc, len(names)  # number of classes, names
@@ -201,9 +201,9 @@ class ConfusionMatrix:
                        annot_kws={
                            "size": 8},
                        cmap='Blues',
-                       fmt='.2f',
+                       fmt='d',
                        square=True,
-                       vmin=0.0,
+                       vmin=0,
                        xticklabels=ticklabels,
                        yticklabels=ticklabels).set_facecolor((1, 1, 1))
         ax.set_ylabel('True')
